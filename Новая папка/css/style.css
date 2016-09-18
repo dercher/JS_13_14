@@ -154,10 +154,11 @@ label::before {
 input[type="radio"] + label::before, input[type="checkbox"] + label::before {
   background-color: #fff;
   border-radius: 18px;
-  -webkit-transition: all 900ms ease; /* Firefox */
-  -moz-transition: all 900ms ease; /* WebKit */
-  -o-transition: all 900ms ease; /* Opera */
-  transition: all 900ms ease; /* Standard */
+
+-webkit-transition: all 900ms ease; /* Firefox */
+-moz-transition: all 900ms ease; /* WebKit */
+-o-transition: all 900ms ease; /* Opera */
+transition: all 900ms ease; /* Standard */
 }
 input[type="radio"]:checked + label, input[type="checkbox"]:checked + label {
   padding-left: 10px;
@@ -168,10 +169,11 @@ input[type="radio"]:checked + label::before, input[type="checkbox"]:checked + la
   width: 100%;
   height: 100%;
   background: #436ca2;
-  -webkit-transition: all 600ms ease; /* Firefox */
-  -moz-transition: all 600ms ease; /* WebKit */
-  -o-transition: all 600ms ease; /* Opera */
-  transition: all 600ms ease; /* Standard */
+
+-webkit-transition: all 600ms ease; /* Firefox */
+-moz-transition: all 600ms ease; /* WebKit */
+-o-transition: all 600ms ease; /* Opera */
+transition: all 600ms ease; /* Standard */
 }
 label::before {
   -webkit-transition: .25s all ease;
