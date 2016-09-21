@@ -131,25 +131,25 @@ $(function(){
       + p1 + 0 + connect(math1[0],33) +1+ id + 0 + For +dig2+ math1[0] + p2 
       + p1 + 1 + connect(math1[1],33) +2+ id + 1 + For +dig2+ math1[1] + p2      
       + p1 + 2 + connect(math1[2],33) +3+ id + 2 + For +dig2+ math1[2] + p2  
-      + p1 + 3 + connect(math1[3],33) +4+ id + 3 + For +dig2+ math1[3] + p2 + '<div class="clear">Clear</div></div>',      
+      + p1 + 3 + connect(math1[3],33) +4+ id + 3 + For +dig2+ math1[3] + p2 + '<div class="clear">Clear</div><div class="clearBlank">Clear</div></div>',      
 
       quest2: '<div>' + div1 + '2. Значение какой разности равно 5? ? ' + div2   
       + p1 + 4 + connect(math2[0],37) +1+ id + 4 +For +dig2+ math2[0] + p2 
       + p1 + 5 + connect(math2[1],37) +2+ id + 5 +For +dig2+ math2[1] + p2      
       + p1 + 6 + connect(math2[2],37) +3+ id + 6 +For +dig2+ math2[2] + p2  
-      + p1 + 7 + connect(math2[3],37) +4+ id + 7 +For +dig2+ math2[3] + p2 + '<div class="clear">Clear</div></div>',
+      + p1 + 7 + connect(math2[3],37) +4+ id + 7 +For +dig2+ math2[3] + p2 + '<div class="clear">Clear</div><div class="clearBlank">Clear</div></div>',
 
       quest3: '<div>' + div1 + '3. Значение каких умножений равно 21 ? ' + div2   
       + p1 + 8 + connect(math3[0],41) +1+ id + 8 +For +dig2+ math3[0] + p2 
       + p1 + 9 + connect(math3[1],41) +2+ id + 9 +For +dig2+ math3[1] + p2      
       + p1 + 10 + connect(math3[2],41) +3+ id + 10 +For +dig2+ math3[2] + p2  
-      + p1 + 11 + connect(math3[3],41) +4+ id + 11 +For +dig2+ math3[3] + p2 + '<div class="clear">Clear</div></div>',
+      + p1 + 11 + connect(math3[3],41) +4+ id + 11 +For +dig2+ math3[3] + p2 + '<div class="clear">Clear</div><div class="clearBlank">Clear</div></div>',
 
       quest4: '<div>' + div1 + '4. Значение каких делений равно 3 ? ' + div2   
       + p1 + 12 + connect(math4[0],45) +1+ id + 12 +For +dig2+ math4[0] + p2 
       + p1 + 13 + connect(math4[1],45) +2+ id + 13 +For +dig2+ math4[1] + p2      
       + p1 + 14 + connect(math4[2],45) +3+ id + 14 +For +dig2+ math4[2] + p2  
-      + p1 + 15 + connect(math4[3],45) +4+ id + 15 +For +dig2+ math4[3] + p2 + '<div class="clear">Clear</div></div>',
+      + p1 + 15 + connect(math4[3],45) +4+ id + 15 +For +dig2+ math4[3] + p2 + '<div class="clear">Clear</div><div class="clearBlank">Clear</div></div>',
      right: [",34,36", ",39,40", ",41,44", ",46"],
      // right2: ['var34', 'var36', 'var39', 'var40', 'var41', 'var44', 'var46'],
      right2: [34, 36, 39, 40, 41, 44, 46],
@@ -195,11 +195,7 @@ function setRandom(min, max)
     $('.modal__wrapper').append('<div class="modal__border"><div>');  
     $('.modal__border').append('<div class="modal"><div>');   // -- creating modal window
     $('.modal__wrapper').hide(0);
-
-    // $('input[type="radio"]').eq(1).removeClass('input').addClass('rightInput');
-    // $('input[type="radio"]').eq(2).removeClass('input').addClass('wrongInput');
 //------------------------------------------------------------------------------------------------
-       // --- button defining between ['Prove my Results']  and ['Take the test again']
     $('.result').click(function(){   // -------- proving the result 
        var point = 0;
        var count = 0;
@@ -223,7 +219,6 @@ function setRandom(min, max)
         if(check == false ) blank = true;                          // ---- if just one blank is true the test couldn't be passed
        }
      }
-
        //---------
     if( fileName == 'index1.html' && blank == false ) {
       var ofNum = 8;     // ---- amount of JS test questions
@@ -231,8 +226,11 @@ function setRandom(min, max)
       var paddingTop = '1700px'; // for modal_wrapper
       var row = 0;  // -- counting weather the all answers were selected ( must be 8 )
 
-       $('.result').fadeOut(0);
-       $('.takeAgain').fadeIn(0);
+       $('.result').fadeOut(0);           // -------
+       $('.takeAgain').fadeIn(0);         //-------- replacing buttons
+
+       $('input').attr("disabled","disabled");   // -- making the checkboxes disabled
+       $('label').css('cursor', 'default');
     
       var ans = jsQuests.right;
        for( var i = 1; i < 33; i++ ) {       //----------- coloring right and wrong answers in JS test
@@ -309,6 +307,11 @@ function setRandom(min, max)
        $('.result').fadeOut(0);       //----------
        $('.takeAgain').fadeIn(0);     //---------- replacing the buttons
 
+       $('input').attr("disabled","disabled");   // -- making the checkboxes disabled
+       $('label').css('cursor', 'default');
+       $('.clear').fadeOut(0);
+       $('.clearBlank').fadeIn(0);
+
        var ans = mathQuests.right2;
        for( var i = 33; i < 49; i++ ) {
           var check = $('input[id="var' +i+ '"]').is(':checked');
@@ -335,18 +338,20 @@ function setRandom(min, max)
      
 
       $('.modal').append('<div class="ok">OK</div>');
-
-        $('.takeAgain').click(function(){     //  -------------- by clicking the button ok
+//-----------------------------------------------------------by clicking the button  "Take the test again"----------------------
+        $('.takeAgain').click(function(){ 
         
-        if(fileName == 'index1.html' && $('.takeAgain').text() == 'Take the test again' ) {
-         
+        if(fileName == 'index1.html' && $('.takeAgain').text() == 'Take the test again' ) {       
            for( var i = 0; i < 33; i++ ) {
            $("#var" + i ).prop("checked", false);             // remove all checked attributes 
            $("#var" + i).removeClass().addClass('input');     //  --- replacing back the classes ".input"          
            $('.takeAgain').fadeOut(0);
            $('.result').fadeIn(0);
-          };
-        }
+         }
+           $('input').removeAttr("disabled");   // -- making the checkboxes disabled
+           $('label').css('cursor', 'pointer');
+       }
+        //----------------------
         if( fileName == 'index2.html' ) {
           for( var i = 33; i < 49; i++ ) {
             $("#var" + i ).prop("checked", false);            // remove all checked attributes
@@ -354,9 +359,13 @@ function setRandom(min, max)
             $('.takeAgain').fadeOut(0);
             $('.result').fadeIn(0);
           }
+           $('input').removeAttr("disabled");;   // -- making the checkboxes disabled
+           $('label').css('cursor', 'pointer');
+           $('.clearBlank').fadeOut(0);
+           $('.clear').fadeIn(0);
         }
       })
-    
+    //---------------------------------------------------------------------------------------------------------------------
       $('.ok').click(function(){     //  -------------- by clicking the button ok
       if(fileName == 'index1.html') {
        $('.modal__wrapper').fadeOut(500);

@@ -13,6 +13,14 @@
   border-radius: 10px;
   overflow: auto;
   padding-bottom: 10px;
+
+    box-shadow: 
+   inset 0 0 3px 1px rgba(255,255,255,.8),
+   inset rgba(255,255,255,.3) 5px 5px 8px 5px,
+   inset rgba(255,255,255,.5) -4px -4px 8px 4px,
+   1px 1px 1px rgba(255,255,255,.1),
+   -2px -2px 5px rgba(0,0,0,.1);
+  transition: .2s;
 }
 .headLine {
   text-align: center;
@@ -59,7 +67,6 @@ span:hover {
   font-size: 19px;
   letter-spacing: 0em; 
 }
-
 .question {
   clear: both;
   margin-left: 70px;
@@ -222,27 +229,54 @@ label:before {
   text-shadow: 2px 2px 2px rgba(150, 150, 150, 1);
   margin: 0 auto;
 }
-.clear {
-  background: #789a74;
-  padding: 5px;
-  width: 40px;
-  margin-left: 60px;
+/*//-------------------------*/
+.clear, .clearBlank {
+  max-width: 42px;
   font-size: 16px;
-  border-radius: 5px;
+  font-weight: bold;
+  color: rgba(255,255,255,.6);
+  text-shadow: 1px 1px rgba(0,0,0,.3);
+  text-decoration: none;
+  padding: 5px;
+  margin-left: 60px;
+  margin-bottom: 30px;
+  border-radius: 15px;
+  background: rgb(10,120,10);
+  box-shadow:
+
+   inset 0 0 3px 1px rgba(0,0,0,.8),
+   inset rgba(0,0,0,.3) -5px -5px 8px 5px,
+   inset rgba(255,255,255,.5) 5px 5px 8px 5px,
+   1px 1px 1px rgba(255,255,255,.1),
+   -2px -2px 5px rgba(206,167,106,.1);
+  transition: .2s;
   cursor: pointer;
-  color: #fff;
+}
+.clearBlank {
+  display: none;
+  cursor: default;
 }
 .clear:hover {
-  background: #9eb99b;
-  box-shadow: 0px 0px 8px 0px #698a65 inset
+  color: rgba(255,255,255,.9);
+  background: rgb(20,130,20);
 }
+.clear:active {
+  background: rgb(0,110,0);
+  box-shadow:
+  inset 0 0 5px 3px rgba(0,0,0,.8),
+  inset rgba(0,0,0,.3) -5px -5px 8px 5px,
+  inset rgba(255,255,255,.5) 5px 5px 8px 5px,
+  1px 1px 1px rgba(255,255,255,.2),
+  -2px -2px 5px rgba(197,150,78,.5);
+}
+/*--------------------------------------------------------------*/
 .takeAgain, .result, .option_1, .option_2  {
   position: relative;
   margin: 0 auto;
   background: #d7d7d7;
   max-width: 200px;
   max-height: 20px;
-  padding: 10px;
+  padding: 7px 0 12px 0;
   border-radius: 15px;
   font-size: 20px;
   font-weight: bold;
@@ -250,51 +284,50 @@ label:before {
   cursor: pointer;
   text-align: center;
   text-shadow: 1px 2px 2px rgba(150, 150, 150, 1);
-  box-shadow: 0px 0px 37px -4px #557175 inset;
+  box-shadow: inset 0 0 3px 1px rgba(0,0,0,.8),
+   inset rgba(0,0,0,.3) -5px -5px 8px 5px,
+   inset rgba(255,255,255,.5) 5px 5px 8px 5px,
+   1px 1px 1px rgba(255,255,255,.1),
+   -2px -2px 5px rgba(0,0,0,.1);
+  transition: .2s;
 }
 .takeAgain, .result {
   bottom: 80px;
-}
-.takeAgain:hover, .result:hover {
-  background: #eeeeee;
-  text-shadow: 3px 3px 2px rgba(150, 150, 150, 1);
-  -webkit-transition: all 1s ease; /* Firefox */
-  -moz-transition: all 1s ease; /* WebKit */
-  -o-transition: all 1s ease; /* Opera */
-  transition: all 1s ease; /* Standard */
-}
-.takeAgain:active, .result:active {
-  background: #c7c7c7;
-  -webkit-transition: all 200ms ease; /* Firefox */
-  -moz-transition: all 200ms ease; /* WebKit */
-  -o-transition: all 200ms ease; /* Opera */
-  transition: all 200ms ease; /* Standard */
+  min-width: 200px;
+  max-width: 200px;
+  min-height: 25px;
 }
 .option_1, .option_2 {
   position: absolute;
   top: 50px;
+  min-width: 115px;
+  min-height: 25px;
 }
 .option_1 {
   left: 20px;
-  padding-bottom: 12px;
 }
 .option_2 {
   right: 20px;
-  padding-bottom: 12px;
+  min-width: 125px;
 }
 .option_1:hover {
   text-shadow: -3px 3px 2px rgba(150, 150, 150, 1);
+   padding-left: 5px;
+   min-width: 110px;
 }
 .option_2:hover {
   text-shadow: 3px 3px 2px rgba(150, 150, 150, 1);
+  padding-right: 5px;
+  min-width: 120px;
 }
-.option_1:hover, .option_2:hover {
-  background: #eeeeee;
-  transform: scale(1.1);
+.takeAgain:hover, .result:hover {
+  text-shadow: 3px 3px 2px rgba(150, 150, 150, 1);
+}
+.option_1:hover, .option_2:hover, .takeAgain:hover, .result:hover  {
+  background: #e6e6e6;
   -webkit-transition: all 1s ease; /* Firefox */
   -moz-transition: all 1s ease; /* WebKit */
   -o-transition: all 1s ease; /* Opera */
   transition: all 1s ease; /* Standard */
 }
-
 /*//----------------------------------*/
